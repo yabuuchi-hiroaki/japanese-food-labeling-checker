@@ -1,7 +1,7 @@
 # japanese-food-labeling-checker
-Automatic checker for Japanese food labeling
+Automatic checker for Japanese food labeling　～食品表示（一括表示）を校正するためのプログラム集～
 
-## 原材料名表示の確認スクリプト（Javascript）
+### 原材料名表示の確認スクリプト（Javascript）
 https://yabuuchi-hiroaki.github.io/japanese-food-labeling-checker/
 
 ## 参考
