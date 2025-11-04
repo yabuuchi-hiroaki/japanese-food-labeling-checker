@@ -1,5 +1,4 @@
 'use strict';
-//行数100まで
 
 var is_tenka = {}
 var tenka2alr = {}
@@ -56,7 +55,6 @@ function find_area(in_kakko){
 }
 
 function clickBtn(){
-  //msg.innerText = text1.value;
   let str = text1.value;
   str = str.replace('(', '（');
   str = str.replace(')', '）');
@@ -100,7 +98,7 @@ function clickBtn(){
       lv = lv + 1
     }else if(s1 == '）'){
       if( lv == 0 ){
-        //MsgBox "カッコ）が閉じていません"
+        output[k][6] = "カッコ）が正しく閉じていません"
       }
       word2 = find_allergy(word)
       if(word2 != ""){
@@ -118,6 +116,9 @@ function clickBtn(){
         if( is_tenka[word] && word !="" ){
           output[k][3] = "〇"
           output[k][4] = tenka2alr[ word ]
+        }else if( is_food[word] ){
+          output[k][3] = "〇"
+          output[k][4] = food2alr[ word ]
         }else{
           output[k][3] = ""
         }
@@ -218,36 +219,37 @@ function clickBtn(){
     if(word == "甘味料" || word == "着色料" || word == "保存料" || word == "増粘剤" || word == "安定剤" || word == "ゲル化剤" || word == "糊料" || word == "酸化防止剤" || word == "発色剤" || word == "漂白剤" || word == "防かび剤" || word == "防ばい剤"){
       output[k][6] = "注意：用途名併記が必要"
     }
-    if(output[0][5] == undefined){
+  }
+  if(output[0][5] == undefined){
       output[0][6] = "原産地表示の確認"
-    }
   }
 
   let tableHTML = '<table border="1">';
-  tableHTML += '<tr><th>名称1</th><th>リスト1</th><th>名称2</th><th>リスト2</th><th>アレルギー</th><th>原産地</th><th>備考</th></tr>';
+  tableHTML += '<tr><th>名称1</th><th>リスト1</th><th>名称2</th><th>リスト2</th><th>アレルギー物質</th><th>原産地</th><th>コメント</th></tr>';
   for (let i = 0; i <= k; i++) {
     tableHTML += '<tr>';
     if(output[i][0] == '●食品添加物'){
       tableHTML += '<td colspan="7">' + output[i][0] + '</td>';
       continue
     }
-    for (let j = 0; j < output[i].length; j++) {
+    for (let j = 0; j < output[i].length - 1; j++) {
       if(output[i][j] !="" && output[i][j] != undefined){
         tableHTML += '<td>' + output[i][j] + '</td>';
       }else{
         tableHTML += '<td></td>';
       }
-      //console.log(`行: ${i}, 列: ${j}, 値: ${output[i][j]}`); 
+    }
+    let j = output[i].length - 1
+    if(output[i][j] != "" && output[i][j] != undefined){
+      tableHTML += '<td><font color="red">' + output[i][j] + '</font></td>';
+    }else{
+      tableHTML += '<td></td>';
     }
     tableHTML += '</tr>';
   }
   tableHTML += '</table>';
   document.getElementById('matrix-container').innerHTML = tableHTML;
 }
-
-//let reviewTextarea = document.getElementById('text1');
-//text1.value = '原材料名を入力してください';
-//let msg = document.getElementById('msg');
 
 let checkButton = document.getElementById('checkButton');
 checkButton.addEventListener('click', clickBtn);
