@@ -84,10 +84,10 @@ function clickBtn(){
         word = word + s1
       }else{
         output[k][0] = word
-        if( is_tenka[word] ){
+        if( is_tenka[word] && word != "" ){
           output[k][1] = "〇"
           output[k][4] = tenka2alr[ word ]
-        }else if( is_food[word] ){
+        }else if( is_food[word] && word != "" ){
           output[k][1] = "〇"
           output[k][4] = food2alr[ word ]
         }else{
@@ -113,10 +113,10 @@ function clickBtn(){
       lv = lv - 1
       if(lv == 0){
         output[k][2] = word
-        if( is_tenka[word] && word !="" ){
+        if( is_tenka[word] && word != "" ){
           output[k][3] = "〇"
           output[k][4] = tenka2alr[ word ]
-        }else if( is_food[word] ){
+        }else if( is_food[word] && word != "" ){
           output[k][3] = "〇"
           output[k][4] = food2alr[ word ]
         }else{
@@ -222,6 +222,9 @@ function clickBtn(){
   }
   if(output[0][5] == undefined){
       output[0][6] = "原産地表示の確認"
+  }
+  if(! output[k-1][4].includes("一部に")){
+      output[k][6] = "アレルギー表示の確認"
   }
 
   let tableHTML = '<table border="1">';
