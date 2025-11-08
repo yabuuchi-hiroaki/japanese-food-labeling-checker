@@ -2,7 +2,9 @@
 Automatic checker for Japanese food labeling　～食品表示（一括表示）を校正するためのプログラム集～
 
 ### 原材料名表示の確認スクリプト（Javascript）
-https://yabuuchi-hiroaki.github.io/japanese-food-labeling-checker/
+- 「、」で区切り、リストの存在を確認
+- 用途名併記、アレルギー表示、原料原産地表示の確認
+- [サンプルプログラム](https://yabuuchi-hiroaki.github.io/japanese-food-labeling-checker/)
 
 ## 参考
 - [食品表示基準（平成二十七年内閣府令第十号）](https://laws.e-gov.go.jp/law/427M60000002010)
