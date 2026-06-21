@@ -9,7 +9,7 @@ Automatic checker for Japanese food labeling　～食品表示（一括表示）
 ### 2. 原材料名表示の類似性検索スクリプト（Javascript）
 - 原材料名の表示順で重み付けし、COSINE類似度を計算
 - [サンプルプログラム](https://yabuuchi-hiroaki.github.io/japanese-food-labeling-checker/index2.html)
-- 
+
 ## 参考
 - [食品表示基準（平成二十七年内閣府令第十号）](https://laws.e-gov.go.jp/law/427M60000002010)
 - [食品表示基準Q&Aについて(平成27年3月30日消食表第140号)](https://www.caa.go.jp/policies/policy/food_labeling/food_labeling_act/#140_qa)
