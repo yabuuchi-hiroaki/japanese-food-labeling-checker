@@ -3,6 +3,7 @@
 var is_food = {}
 var food2alr = {}
 var req2 = new XMLHttpRequest()
+
 req2.open("get", "food.txt", true)
 req2.send(null)
 req2.onload = function(){
@@ -177,8 +178,9 @@ function clickBtn(){
   //ids = uniq(ids)
 
   // ### cosine similarity search ###
-  let hits = []
-  let hit_scores = []
+  var output = [];
+  for(var i=0; i<100; i++) output.push(Array(2));
+  let hit = -1
   let xx = 0
   
   for (let key in idrank) {
@@ -205,15 +207,18 @@ function clickBtn(){
       cos = xy / (Math.sqrt(xx) * Math.sqrt(yy))
     }
     if( cos >= 0.7 ){
-      hits.push(id_sp_mat[2])
-      hit_scores.push( Math.round(cos*100) / 100 )
+      hit++
+      output[hit][0] = id_sp_mat[2]
+      output[hit][1] = Math.round(cos*100) / 100
     }
   }
-  tableHTML += '<tr><th>原材料名</th><th>類似度</th></tr>'
-  for (let h = 0; h < hits.length; h++) {
-    tableHTML += '<tr><td>' + hits[h] + '</td><td>' + hit_scores[h] + '</td></tr>'
+  output.sort((a, b) => b[1] - a[1]);
+
+  tableHTML += '<thead><tr><th>原材料名</th><th>類似度</th></tr></thead><tbody>'
+  for (let h = 0; h <= hit; h++) {
+    tableHTML += '<tr><td>' + output[h][0] + '</td><td>' + output[h][1] + '</td></tr>'
   }
-  tableHTML += '</table>'
+  tableHTML += '</tbody></table>'
   document.getElementById('matrix-container').innerHTML = tableHTML;
 }
 
