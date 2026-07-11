@@ -179,7 +179,7 @@ function clickBtn(){
 
   // ### cosine similarity search ###
   var output = [];
-  for(var i=0; i<100; i++) output.push(Array(2));
+  for(var i=0; i<100; i++) output.push(Array(3));
   let hit = -1
   let xx = 0
   
@@ -208,15 +208,16 @@ function clickBtn(){
     }
     if( cos >= 0.7 ){
       hit++
-      output[hit][0] = id_sp_mat[2]
-      output[hit][1] = Math.round(cos*100) / 100
+      output[hit][0] = id_sp_mat[3]
+      output[hit][1] = id_sp_mat[2]
+      output[hit][2] = Math.round(cos*100) / 100
     }
   }
-  output.sort((a, b) => b[1] - a[1]);
+  output.sort((a, b) => b[2] - a[2]);
 
-  tableHTML += '<thead><tr><th>原材料名</th><th>類似度</th></tr></thead><tbody>'
+  tableHTML += '<thead><tr><th>名称</th><th>原材料名</th><th>類似度</th></tr></thead><tbody>'
   for (let h = 0; h <= hit; h++) {
-    tableHTML += '<tr><td>' + output[h][0] + '</td><td>' + output[h][1] + '</td></tr>'
+    tableHTML += '<tr><td>' + output[h][0] + '</td><td>' + output[h][1] + '</td><td>' + output[h][2] + '</td></tr>'
   }
   tableHTML += '</tbody></table>'
   document.getElementById('matrix-container').innerHTML = tableHTML;
