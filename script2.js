@@ -3,6 +3,7 @@
 var is_food = {}
 var food2alr = {}
 var req2 = new XMLHttpRequest()
+var COS_LIM = 0.5
 
 req2.open("get", "food.txt", true)
 req2.send(null)
@@ -206,7 +207,7 @@ function clickBtn(){
     if( xx * yy > 0){
       cos = xy / (Math.sqrt(xx) * Math.sqrt(yy))
     }
-    if( cos >= 0.7 ){
+    if( cos >= COS_LIM ){
       hit++
       output[hit][0] = id_sp_mat[3]
       output[hit][1] = id_sp_mat[2]
