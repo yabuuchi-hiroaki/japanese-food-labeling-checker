@@ -6,8 +6,8 @@ Automatic checker for Japanese food labeling　～食品表示（一括表示）
 - 用途名併記、アレルギー表示、原料原産地表示の確認
 - [サンプルプログラム](https://yabuuchi-hiroaki.github.io/japanese-food-labeling-checker/)
 
-### 2. 原材料名表示の類似性検索スクリプト（Javascript）
-- 原材料名の表示順で重み付けし、コサイン類似度を計算（0.7以上なら出力）　※添加物は、計算から除外
+### 2. 原材料名表示の類似性検索スクリプト（Javascript、簡易版）
+- 原材料名の表示順で重み付けし、コサイン類似度を計算（0.5以上なら出力）　※添加物は、計算から除外
 - [サンプルプログラム](https://yabuuchi-hiroaki.github.io/japanese-food-labeling-checker/index2.html)
 
 ## 参考
